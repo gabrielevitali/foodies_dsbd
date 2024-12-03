@@ -1,0 +1,111 @@
+x-common-settings: &common-settings
+  restart: always
+  networks:
+    app_network:
+
+x-common-db: &common-db
+  depends_on:
+    - mysql_db
+
+services:
+  apigw:
+    <<: *common-settings
+    build: ./nginx
+    container_name: api_gateway
+    ports:
+      - "80:80"
+    depends_on:
+      - auth_service
+      - food_service
+      - order_service
+      - payment_service
+
+  auth_service:
+    <<: [*common-settings, *common-db]
+    build:
+      context: ./auth_service
+    container_name: auth_service
+    env_file:
+      - ./auth_service/.env  # file di configurazione delle variabili di ambiente
+    environment:
+      - MYSQL_HOST
+      - MYSQL_PORT
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_ALLOW_EMPTY_PASSWORD
+
+  food_service:
+    <<: *common-settings
+    build:
+      context: ./food_service
+    container_name: food_service
+    env_file:
+      - ./food_service/.env
+    depends_on:
+      - mongo_db
+
+  order_service:
+    <<: [*common-settings, *common-db]
+    build:
+      context: ./order_service
+    container_name: order_service
+    env_file:
+      - ./order_service/.env
+
+  payment_service:
+    <<: [*common-settings, *common-db]
+    build:
+      context: ./payment_service
+    container_name: payment_service
+    env_file:
+      - ./payment_service/.env
+
+  mysql_db:
+    <<: *common-settings
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  adminer:
+    <<: *common-settings
+    image: adminer
+    container_name: adminer
+    ports:
+      - "8083:8080"
+    depends_on:
+      - mysql_db
+
+  mongo_db:
+    <<: *common-settings
+    image: mongo:latest
+    container_name: mongo_db
+    ports:
+      - "27017:27017"  # per debug
+    env_file:
+      - .env
+    volumes:
+      - mongo-data:/data/db
+
+  mongo-express:
+    <<: *common-settings
+    image: mongo-express
+    ports:
+      - "8084:8081"
+    env_file:
+      - .env
+    depends_on:
+      - mongo_db
+
+volumes:
+  mysql-data:
+  mongo-data:
+
+networks:
+  app_network:
+    name: app-network
+    driver: bridge
