@@ -1,6 +1,5 @@
-import mysql.connector
 from flask import current_app # oggetto speciale che rappresenta l'istanza dell'applicazione Flask attualmente attiva
-
+import mysql.connector
 
 def connect_to_db():  # MySQL
 

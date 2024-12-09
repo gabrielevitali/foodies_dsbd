@@ -1,2 +1,4 @@
 Flask==3.1.0
+PyJWT
 mysql-connector-python==9.1.0
+kafka-python>=2.0.2

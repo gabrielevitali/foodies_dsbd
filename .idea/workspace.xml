@@ -4,66 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83522f88-f957-45f6-8a1b-3963e2e75949" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth_service/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth_service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth_service/app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth_service/app/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth_service/app/routes/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth_service/app/routes/auth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth_service/app/services/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth_service/app/services/db_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth_service/app/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth_service/app/utils/hash_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth_service/app/utils/jwt_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth_service/auth_service.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth_service/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auth_service/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food_service/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food_service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food_service/app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food_service/app/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food_service/app/routes/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food_service/app/routes/food.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food_service/app/services/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food_service/app/services/db_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food_service/app/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food_service/app/utils/jwt_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food_service/food_service.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food_service/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/food_service/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/foodies.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nginx/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nginx/nginx.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order_service/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order_service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order_service/app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order_service/app/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order_service/app/routes/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order_service/app/routes/order.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order_service/app/services/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order_service/app/services/db_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order_service/order_service.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order_service/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order_service/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_service/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_service/app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_service/app/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_service/app/routes/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_service/app/routes/payment.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_service/app/services/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_service/app/services/db_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_service/payment_service.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_service/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_service/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/untitled.iml" afterDir="false" />
+    <list default="true" id="83522f88-f957-45f6-8a1b-3963e2e75949" name="Changes" comment="provaa">
+      <change afterPath="$PROJECT_DIR$/order_service/app/services/kafka_compensation_event_consumer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order_service/app/services/kafka_event_consumer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order_service/app/services/kafka_producer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order_service/app/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order_service/app/utils/create_thread.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order_service/app/utils/jwt_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order_service/app/utils/useful_functions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment_service/app/services/kafka_consumer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment_service/app/services/kafka_producer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment_service/app/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment_service/app/utils/jwt_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment_service/app/utils/useful_functions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment_service/utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth_service/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/auth_service/app/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth_service/app/routes/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/auth_service/app/routes/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auth_service/app/utils/jwt_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/auth_service/app/utils/jwt_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/food_service/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/food_service/app/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/food_service/app/routes/food.py" beforeDir="false" afterPath="$PROJECT_DIR$/food_service/app/routes/food.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/food_service/app/utils/jwt_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/food_service/app/utils/jwt_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/nginx.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order_service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order_service/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order_service/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/app/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order_service/app/routes/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/app/routes/order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order_service/app/services/db_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/app/services/db_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order_service/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order_service/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment_service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/payment_service/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment_service/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/payment_service/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment_service/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/payment_service/app/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment_service/app/routes/payment.py" beforeDir="false" afterPath="$PROJECT_DIR$/payment_service/app/routes/payment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment_service/app/services/db_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/payment_service/app/services/db_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment_service/payment_service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/payment_service/payment_service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment_service/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/payment_service/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment_service/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/payment_service/wsgi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,8 +52,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Dockerfile" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -93,6 +72,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -114,7 +96,7 @@
     &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.modules.automatic.dependencies.download&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/gabri/Desktop/Workspace/Flask/foodies/auth_service/wsgi.py&quot;,
@@ -126,6 +108,7 @@
     &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.37810487&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -260,8 +243,32 @@
       <updated>1733143610047</updated>
       <workItem from="1733143611044" duration="6777000" />
       <workItem from="1733153588393" duration="12311000" />
-      <workItem from="1733183570903" duration="509000" />
+      <workItem from="1733183570903" duration="2236000" />
+      <workItem from="1733231985078" duration="10288000" />
+      <workItem from="1733310942755" duration="17215000" />
+      <workItem from="1733399627254" duration="22472000" />
+      <workItem from="1733493174507" duration="21693000" />
+      <workItem from="1733571011760" duration="7005000" />
+      <workItem from="1733679946523" duration="9812000" />
+      <workItem from="1733742932408" duration="11218000" />
     </task>
+    <task id="LOCAL-00001" summary="prova">
+      <option name="closed" value="true" />
+      <created>1733184259317</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1733184259317</updated>
+    </task>
+    <task id="LOCAL-00002" summary="provaa">
+      <option name="closed" value="true" />
+      <created>1733184482314</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1733184482314</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,17 +283,38 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="prova" />
+    <MESSAGE value="provaa" />
+    <option name="LAST_COMMIT_MESSAGE" value="provaa" />
+  </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
   </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/foodies$wsgi__3_.coverage" NAME="wsgi (3) Coverage Results" MODIFIED="1733159013186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/payment_service" />
+    <SUITE FILE_PATH="coverage/foodies$wsgi__3_.coverage" NAME="wsgi (3) Coverage Results" MODIFIED="1733505249227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/payment_service" />
     <SUITE FILE_PATH="coverage/foodies$wsgi.coverage" NAME="wsgi Coverage Results" MODIFIED="1733145658873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auth_service" />
     <SUITE FILE_PATH="coverage/foodies$wsgi__1_.coverage" NAME="wsgi (1) Coverage Results" MODIFIED="1733156666623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/food_service" />
     <SUITE FILE_PATH="coverage/foodies$wsgi__2_.coverage" NAME="wsgi (2) Coverage Results" MODIFIED="1733158944044" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/order_service" />

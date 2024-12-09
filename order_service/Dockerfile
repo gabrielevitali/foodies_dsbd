@@ -9,4 +9,4 @@ COPY . /app/
 # installa le dipendenze
 RUN pip install --no-cache-dir -r requirements.txt
 
-ENTRYPOINT ["python", "-m", "flask", "run"]
+ENTRYPOINT ["python", "wsgi.py"]

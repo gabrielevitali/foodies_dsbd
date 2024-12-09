@@ -16,7 +16,7 @@ def generate_token(username, admin):
         "sub": username,  # subject
         "iss": "auth_service",  # issuer che ha rilasciato il token
         "iat": current_local_time,  # timestamp di emissione del token
-        "exp": current_local_time + timedelta(hours=1),  # timestamp di scadenza (es. 1 ora)
+        "exp": current_local_time + timedelta(hours=current_app.config['DEFAULT_HOURS']),  # timestamp di scadenza (es. 3 ore)
         "role": role  # ruolo per discriminare user generico da admin
     }
 

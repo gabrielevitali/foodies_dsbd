@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, current_app
 from app.services.db_service import connect_to_db
 from app.utils.hash_utils import hash_password, verify_password
 from app.utils.jwt_utils import generate_token
@@ -49,7 +49,8 @@ def signup():
 
         hashed_password = hash_password(password)  # genera l'hash della password
 
-        credito = 400 if admin == 0 else 0
+        default_credit = current_app.config['DEFAULT_CREDIT']
+        credito = default_credit if admin == 0 else 0
 
         # inserimento del nuovo utente
         cursor.execute(
@@ -96,8 +97,6 @@ def login():
                 token = generate_token(username, user_db["admin"])
                 return jsonify({"message": "Login eseguito con successo", "token": token}), 200
             else:
-                import traceback
-                traceback.print_exc()
                 return jsonify({"error": "Password errata"}), 401
         else: # se l'username cercato non è stato trovato
             return jsonify({"error": "Username non trovato"}), 401

@@ -10,7 +10,7 @@ class Config:
     AUTH_SERVICE = os.getenv('AUTH_SERVICE', "auth_service")
 
     # configurazione da utilizzare per la connessione a MongoDB
-    DB_HOST = os.getenv('ME_CONFIG_MONGODB_SERVER', 'mongo_db')  # corrispondente al nome del service in docker-compose
+    DB_HOST = os.getenv('ME_CONFIG_MONGODB_SERVER', 'mongo-db')  # corrispondente al nome del service in docker-compose
     DB_PORT = os.getenv('ME_CONFIG_MONGODB_PORT', '27017')  # porta di default
     DB_USERNAME = os.getenv('MONGO_INITDB_ROOT_USERNAME', 'admin')
     DB_PASSWORD = os.getenv('MONGO_INITDB_ROOT_PASSWORD', 'password')

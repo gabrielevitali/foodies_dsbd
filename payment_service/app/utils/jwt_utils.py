@@ -1,7 +1,6 @@
 from flask import current_app, jsonify
 import jwt
 
-
 # funzione che decodifica e verifica validità token JWT
 # input: token JWT ; output: se token è valido, restituisce payload in chiaro, altrimenti un errore
 def verify_token(token, role):
@@ -14,7 +13,7 @@ def verify_token(token, role):
         elif payload.get("role") != role:
             return {"error": "Non sei autorizzato."}
 
-        return True  # payload è un dizionario
+        return True, payload['sub']  # payload è un dizionario
     except jwt.ExpiredSignatureError:
         return {"error": "Token scaduto"}
     except jwt.InvalidTokenError:

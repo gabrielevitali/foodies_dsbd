@@ -16,10 +16,13 @@ def food_search():
     if esito != True:
         return jsonify(esito), 401
 
-        # recupero la stringa "meal" dal corpo della richiesta (json)
+    # recupero dati dal corpo della richiesta (json)
     meal = request.get_json().get("meal")
+    category = request.get_json().get("category")
     if not meal:
         return jsonify({"error": "Parametro 'meal' mancante"}), 400
+    elif not category:
+        return jsonify({"error": "Parametro 'categoria' mancante"}), 400
 
     # connessione a MongoDB
     client = connect_to_db()
@@ -33,23 +36,42 @@ def food_search():
 
     try:
         # cerca il document corrispondente a "meal"
-        result = collection.find_one({"name": meal})
-
-        #result['price']
+        result = collection.find_one({"name": meal, "category": category})
 
         if result:
-            return jsonify({"name": result["name"], "description":result["description"]}), 200
-        else:
-            return jsonify({"error": "Piatto non trovato"}), 404
+            response_json = {"name": result["name"],
+                             "description": result["description"],
+                             "category": result["category"],
+                             "price": result["price"],
+                             "first_choice": 1}
+
+            return jsonify(response_json), 200
+
+        else: # se non trovo meal cercato, ne cerco un altro della stessa categoria
+
+            result = collection.find_one({"category": category})
+
+            if result: # se ho trovato un piatto della stessa categoria di quella specificata dal client
+                response_json = {"name": result["name"],
+                                 "description": result["description"],
+                                 "category": category,
+                                 "price": result["price"],
+                                 "first_choice": 0}
+
+                return jsonify(response_json), 200
+            else:
+                return jsonify({"error": f"Il piatto cercato non è stato trovato. Non è possibile proporti un'alternativa della stessa categoria ({category})"}), 404
 
     except Exception as e:
-        #import traceback
-        #traceback.print_exc()
         #print(f"Errore durante l'interrogazione: {e}")
         return jsonify({"error": "Errore interno"}), 500
 
+    finally:
+        # chiusura connessione al database
+        client.close()
 
-@food_routes.route('/manage/<meal>', methods=['DELETE'])
+
+@food_routes.route('/manage/delete/<meal>', methods=['DELETE'])
 def food_delete(meal):
     role = "admin"
 
@@ -79,10 +101,13 @@ def food_delete(meal):
     except Exception as e:
         print(f"Errore: {e}")
         return jsonify({"error": "Errore interno"}), 500
+    finally:
+        # chiusura connessione al database
+        client.close()
 
 
-@food_routes.route('/manage/<meal>', methods=['PUT'])
-def food_create_or_update(meal):
+@food_routes.route('/manage/create', methods=['POST'])
+def food_create():
     role = "admin"
 
     # estraggo, decodifico e verifico la validità del token
@@ -91,6 +116,20 @@ def food_create_or_update(meal):
     # se c'è un errore nel token, restituisco apposito errore
     if esito != True:
         return jsonify(esito), 401
+
+    # recupero dati dal corpo della richiesta
+    data = request.get_json()
+    name = data.get('name')
+    description = data.get('description')
+    category = data.get('category')
+    price = int(data.get('price'))
+
+    if not all([name, description, category, price]):
+        return jsonify({"error": "Dati incompleti"}), 400
+
+    # verifico che price sia un intero
+    if not isinstance(price, int):
+        return jsonify({"error": "Il prezzo dev'essere un numero intero"}), 400
 
     # connessione a MongoDB
     client = connect_to_db()
@@ -103,38 +142,28 @@ def food_create_or_update(meal):
     collection = db[current_app.config["DB_COLLECTION"]]
 
     try:
-        # recupero dati dal corpo della richiesta
-        data = request.get_json()
-        description = data.get('description')
-        price = data.get('price')
+        # controllo se il piatto esiste già
+        existing_food = collection.find_one({"name": name})
+        if existing_food:
+            return jsonify({"error": "Il piatto esiste già"}), 409
 
-        # Validazione input
-        if not description or not price:
-            return jsonify({"error": "Dati mancanti o incompleti"}), 400
+        # inserisco il nuovo document
+        collection.insert_one({
+            "name": name,
+            "description": description,
+            "category": category,
+            "price": price
+        })
 
-        # verifico che price sia un intero
-        if not isinstance(price, int):
-            return jsonify({"error": "Il prezzo dev'essere un numero intero"}), 400
-
-        # creazione o aggiornamento del document nella collection meal
-        result = collection.update_one(
-            {"name": meal},  # Criterio di selezione (chiave primaria)
-            {"$set": {"description": description, "price": price}},  # dati da aggiornare
-            upsert=True  # se il documento non esiste già, viene creato
-        )
-
-        if result.upserted_id:
-            message = "Piatto creato con successo!"
-        elif result.matched_count > 0:
-            message = "Piatto aggiornato con successo!"
-        else:
-            message = "Nessuna modifica necessaria."
-
-        return jsonify({"message": message}), 200
+        message = "Piatto creato con successo!"
+        return jsonify({"message": message}), 201
 
     except Exception as e:
         print(f"Errore: {e}")
         return jsonify({"error": "Errore interno"}), 500
+    finally:
+        # Chiusura connessione al database
+        client.close()
 
 
 @food_routes.errorhandler(404)

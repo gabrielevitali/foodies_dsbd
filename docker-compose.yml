@@ -3,28 +3,31 @@ x-common-settings: &common-settings
   networks:
     app_network:
 
-x-common-db: &common-db
+x-common-depends-on: &common-depends-on
   depends_on:
-    - mysql_db
+    - mysql-db
+    - kafka
 
 services:
   apigw:
     <<: *common-settings
     build: ./nginx
-    container_name: api_gateway
+    container_name: api-gateway
     ports:
       - "80:80"
     depends_on:
-      - auth_service
-      - food_service
-      - order_service
-      - payment_service
+      - auth-service
+      - food-service
+      - order-service
+      - payment-service
 
-  auth_service:
-    <<: [*common-settings, *common-db]
+  auth-service:
+    <<: *common-settings
     build:
       context: ./auth_service
-    container_name: auth_service
+    container_name: auth-service
+    depends_on:
+      - mysql-db
     env_file:
       - ./auth_service/.env  # file di configurazione delle variabili di ambiente
     environment:
@@ -35,36 +38,37 @@ services:
       - MYSQL_PASSWORD
       - MYSQL_ALLOW_EMPTY_PASSWORD
 
-  food_service:
+  food-service:
     <<: *common-settings
     build:
       context: ./food_service
-    container_name: food_service
+    container_name: food-service
     env_file:
       - ./food_service/.env
     depends_on:
-      - mongo_db
+      - mongo-db
 
-  order_service:
-    <<: [*common-settings, *common-db]
+  order-service:
+    <<: [*common-settings, *common-depends-on]
     build:
       context: ./order_service
-    container_name: order_service
+    container_name: order-service
     env_file:
       - ./order_service/.env
 
-  payment_service:
-    <<: [*common-settings, *common-db]
+  payment-service:
+    <<: [*common-settings, *common-depends-on]
     build:
       context: ./payment_service
-    container_name: payment_service
+    container_name: payment-service
     env_file:
       - ./payment_service/.env
 
-  mysql_db:
+  mysql-db:
     <<: *common-settings
-    image: mysql:8.0
-    container_name: mysql_db
+    #image: mysql:8.0
+    image: gabrielevitali/foodies-mysql:latest
+    container_name: mysql-db
     restart: always
     env_file:
       - .env
@@ -78,12 +82,12 @@ services:
     ports:
       - "8083:8080"
     depends_on:
-      - mysql_db
+      - mysql-db
 
-  mongo_db:
+  mongo-db:
     <<: *common-settings
     image: mongo:latest
-    container_name: mongo_db
+    container_name: mongo-db
     ports:
       - "27017:27017"  # per debug
     env_file:
@@ -99,7 +103,33 @@ services:
     env_file:
       - .env
     depends_on:
-      - mongo_db
+      - mongo-db
+
+  zookeeper:
+    <<: *common-settings
+    image: confluentinc/cp-zookeeper:latest
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+
+  kafka:
+    <<: *common-settings
+    image: confluentinc/cp-kafka:latest
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - 29092:29092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
 volumes:
   mysql-data:
