@@ -1,0 +1,26 @@
+[
+  {
+    "name": "hot roll",
+    "description": "roll fritti con philadelphia e fragole",
+    "category": "sushi",
+    "price": 14
+  },
+  {
+    "name": "margherita",
+    "description": "mozzarella di bufala DOP, pomodoro San Marzano, olio EVO, basilico",
+    "category": "pizza",
+    "price": 9
+  },
+  {
+    "name": "gyoza",
+    "description": "ravioli grigliati di verdure",
+    "category": "sushi",
+    "price": 8
+  },
+  {
+    "name": "sweet dreams",
+    "description": "provola affumicata di Napoli, bacon, patate dolci americane",
+    "category": "pizza",
+    "price": 12
+  }
+]
