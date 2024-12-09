@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83522f88-f957-45f6-8a1b-3963e2e75949" name="Changes" comment="provaa">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="83522f88-f957-45f6-8a1b-3963e2e75949" name="Changes" comment="add utili" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -214,7 +212,7 @@
       <workItem from="1733571011760" duration="7005000" />
       <workItem from="1733679946523" duration="9812000" />
       <workItem from="1733742932408" duration="12707000" />
-      <workItem from="1733777748106" duration="734000" />
+      <workItem from="1733777748106" duration="1059000" />
     </task>
     <task id="LOCAL-00001" summary="prova">
       <option name="closed" value="true" />
@@ -248,7 +246,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733769479025</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add manifests">
+      <option name="closed" value="true" />
+      <created>1733778860443</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733778860443</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add utili">
+      <option name="closed" value="true" />
+      <created>1733778989606</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733778989606</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,7 +298,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="prova" />
     <MESSAGE value="provaa" />
-    <option name="LAST_COMMIT_MESSAGE" value="provaa" />
+    <MESSAGE value="add manifests" />
+    <MESSAGE value="add utili" />
+    <option name="LAST_COMMIT_MESSAGE" value="add utili" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
