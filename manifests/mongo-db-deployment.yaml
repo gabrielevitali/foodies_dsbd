@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-db
+  namespace: foodies
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mongo-db
+    spec:
+      containers:
+        - env:
+            - name: ME_CONFIG_MONGODB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: ME_CONFIG_MONGODB_PORT
+                  name: env
+            - name: ME_CONFIG_MONGODB_SERVER
+              valueFrom:
+                configMapKeyRef:
+                  key: ME_CONFIG_MONGODB_SERVER
+                  name: env
+            - name: MONGO_AUTH_SOURCE
+              valueFrom:
+                configMapKeyRef:
+                  key: MONGO_AUTH_SOURCE
+                  name: env
+            - name: MONGO_INITDB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  key: MONGO_INITDB_DATABASE
+                  name: env
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: MONGO_INITDB_ROOT_PASSWORD
+                  name: env
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: MONGO_INITDB_ROOT_USERNAME
+                  name: env
+          image: mongo:latest
+          imagePullPolicy: Always  # l'immagine viene prelevata ogni volta
+          name: mongo-db
+          resources:
+            requests:
+              memory: "512Mi"  # richiesta di memoria
+              cpu: "500m"      # richiesta di CPU
+            limits:
+              memory: "1Gi"    # limite di memoria
+              cpu: "1"         # limite di CPU
+          volumeMounts:
+            - mountPath: /data/db
+              name: mongo-data
+      restartPolicy: Always
+      volumes:
+        - name: mongo-data
+          persistentVolumeClaim:
+            claimName: mongo-data

@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-db
+  namespace: foodies
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql-db
+    spec:
+      containers:
+        - name: mysql-db
+          image: gabrielevitali/foodies-mysql:latest
+          env:
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  key: MYSQL_DATABASE
+                  name: env
+            - name: MYSQL_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: MYSQL_HOST
+                  name: env
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: MYSQL_PASSWORD
+                  name: env
+            - name: MYSQL_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: MYSQL_PORT
+                  name: env
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: MYSQL_ROOT_PASSWORD
+                  name: env
+            - name: MYSQL_USER
+              valueFrom:
+                configMapKeyRef:
+                  key: MYSQL_USER
+                  name: env
+          resources:
+            requests:
+              memory: "512Mi"  # richiesta di memoria
+              cpu: "500m"      # richiesta di CPU
+            limits:
+              memory: "1Gi"    # limite di memoria
+              cpu: "1"         # limite di CPU
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-data
+      restartPolicy: Always
+      volumes:
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: mysql-data

@@ -5,44 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83522f88-f957-45f6-8a1b-3963e2e75949" name="Changes" comment="provaa">
-      <change afterPath="$PROJECT_DIR$/order_service/app/services/kafka_compensation_event_consumer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order_service/app/services/kafka_event_consumer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order_service/app/services/kafka_producer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order_service/app/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order_service/app/utils/create_thread.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order_service/app/utils/jwt_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order_service/app/utils/useful_functions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_service/app/services/kafka_consumer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_service/app/services/kafka_producer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_service/app/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_service/app/utils/jwt_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_service/app/utils/useful_functions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment_service/utils/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth_service/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/auth_service/app/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth_service/app/routes/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/auth_service/app/routes/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth_service/app/utils/jwt_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/auth_service/app/utils/jwt_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/food_service/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/food_service/app/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/food_service/app/routes/food.py" beforeDir="false" afterPath="$PROJECT_DIR$/food_service/app/routes/food.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/food_service/app/utils/jwt_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/food_service/app/utils/jwt_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order_service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order_service/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order_service/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/app/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order_service/app/routes/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/app/routes/order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order_service/app/services/db_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/app/services/db_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order_service/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order_service/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/order_service/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment_service/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/payment_service/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment_service/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/payment_service/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment_service/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/payment_service/app/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment_service/app/routes/payment.py" beforeDir="false" afterPath="$PROJECT_DIR$/payment_service/app/routes/payment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment_service/app/services/db_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/payment_service/app/services/db_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment_service/payment_service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/payment_service/payment_service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment_service/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/payment_service/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment_service/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/payment_service/wsgi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +213,8 @@
       <workItem from="1733493174507" duration="21693000" />
       <workItem from="1733571011760" duration="7005000" />
       <workItem from="1733679946523" duration="9812000" />
-      <workItem from="1733742932408" duration="11218000" />
+      <workItem from="1733742932408" duration="12707000" />
+      <workItem from="1733777748106" duration="734000" />
     </task>
     <task id="LOCAL-00001" summary="prova">
       <option name="closed" value="true" />
@@ -268,7 +232,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733184482314</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="provaa">
+      <option name="closed" value="true" />
+      <created>1733769468296</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1733769468296</updated>
+    </task>
+    <task id="LOCAL-00004" summary="provaa">
+      <option name="closed" value="true" />
+      <created>1733769479025</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733769479025</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

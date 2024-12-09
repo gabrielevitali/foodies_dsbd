@@ -1,0 +1,41 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: foodies
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  ingressClassName: "nginx"
+  rules:
+  - host: foodies
+    http:
+      paths:
+      - path: /auth/
+        pathType: Prefix
+        backend:
+          service:
+            name: auth    # nome del Service
+            port:
+              number: 5001        # numero della porta del Service
+      - path: /food
+        pathType: Prefix
+        backend:
+          service:
+            name: food
+            port:
+              number: 5002
+      - path: /order
+        pathType: Prefix
+        backend:
+          service:
+            name: order
+            port:
+              number: 5003
+      - path: /payment
+        pathType: Prefix
+        backend:
+          service:
+            name: payment
+            port:
+              number: 5004

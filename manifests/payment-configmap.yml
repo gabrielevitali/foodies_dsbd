@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: payment-env
+    namespace: foodies
+data:
+  FLASK_APP: wsgi
+  FLASK_DEBUG: "1"
+  FLASK_RUN_HOST: 0.0.0.0
+  FLASK_RUN_PORT: "5004"

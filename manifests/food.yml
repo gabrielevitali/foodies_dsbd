@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: food
+  namespace: foodies
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: food
+  template:
+    metadata:
+      labels:
+        app: food
+    spec:
+      containers:
+        - name: food
+          image: gabrielevitali/foodies-food-service:latest   # pull da repository pubblico
+          imagePullPolicy: Always  # l'immagine viene prelevata ogni volta
+          env:
+            - name: FLASK_APP
+              valueFrom:
+                configMapKeyRef:
+                  key: FLASK_APP
+                  name: food-env
+            - name: FLASK_DEBUG
+              valueFrom:
+                configMapKeyRef:
+                  key: FLASK_DEBUG
+                  name: food-env
+            - name: FLASK_RUN_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: FLASK_RUN_HOST
+                  name: food-env
+            - name: FLASK_RUN_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: FLASK_RUN_PORT
+                  name: food-env
+          ports:
+            - containerPort: 5002
+              name: http
+          resources:
+            requests:
+              memory: "256Mi"  # richiesta di memoria
+              cpu: "250m"      # richiesta di CPU
+            limits:
+              memory: "512Mi"  # limite di memoria
+              cpu: "500m"      # limite di CPU
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: food
+  namespace: foodies
+spec:
+  selector:
+    app: food  # deve corrispondere all'etichetta nel Deployment
+  ports:
+    - protocol: TCP
+      port: 5002         # porta esposta dal service
+      targetPort: 5002   # porta in cui il pod è in ascolto

@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zookeeper
+  namespace: foodies
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zookeeper
+  template:
+    metadata:
+      labels:
+        app: zookeeper
+    spec:
+      containers:
+        - name: zookeeper
+          image: confluentinc/cp-zookeeper:latest   # pull da repository pubblico
+          imagePullPolicy: Always  # l'immagine viene prelevata ogni volta
+          env:
+            - name: ZOOKEEPER_CLIENT_PORT
+              value: "2181"
+            - name: ZOOKEEPER_TICK_TIME
+              value: "2000"
+          resources:
+            requests:
+              memory: "256Mi"  # richiesta di memoria
+              cpu: "250m"      # richiesta di CPU
+            limits:
+              memory: "512Mi"  # limite di memoria
+              cpu: "500m"      # limite di CPU
+          ports:
+            - containerPort: 2181
+              protocol: TCP
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zookeeper
+  namespace: foodies
+spec:
+  ports:
+    - name: "2181"
+      port: 2181
+      targetPort: 2181
+  selector:
+    io.kompose.service: zookeeper
+

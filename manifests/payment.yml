@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment
+  namespace: foodies
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment
+  template:
+    metadata:
+      labels:
+        app: payment
+    spec:
+      containers:
+        - name: payment
+          image: gabrielevitali/foodies-payment-service:latest   # pull da repository pubblico
+          imagePullPolicy: Always  # l'immagine viene prelevata ogni volta
+          env:
+            - name: FLASK_APP
+              valueFrom:
+                configMapKeyRef:
+                  key: FLASK_APP
+                  name: payment-env
+            - name: FLASK_DEBUG
+              valueFrom:
+                configMapKeyRef:
+                  key: FLASK_DEBUG
+                  name: payment-env
+            - name: FLASK_RUN_HOST
+              valueFrom:
+                configMapKeyRef:
+                  key: FLASK_RUN_HOST
+                  name: payment-env
+            - name: FLASK_RUN_PORT
+              valueFrom:
+                configMapKeyRef:
+                  key: FLASK_RUN_PORT
+                  name: payment-env
+          ports:
+            - containerPort: 5004
+              name: http
+          resources:
+            requests:
+              memory: "256Mi"  # richiesta di memoria
+              cpu: "250m"      # richiesta di CPU
+            limits:
+              memory: "512Mi"  # limite di memoria
+              cpu: "500m"      # limite di CPU
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment
+  namespace: foodies
+spec:
+  selector:
+    app: payment  # deve corrispondere all'etichetta nel Deployment
+  ports:
+    - protocol: TCP
+      port: 5004         # porta esposta dal service
+      targetPort: 5004  # porta in cui il pod è in ascolto
